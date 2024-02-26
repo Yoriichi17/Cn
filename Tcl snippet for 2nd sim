@@ -11,3 +11,4 @@ while {$i<39} {
 $ns at $i "$p1 send"
 $ns at $i "$p0 send"
 set i [expr $i + 0.1]
+}
