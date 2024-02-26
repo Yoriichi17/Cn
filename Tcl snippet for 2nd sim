@@ -1,0 +1,13 @@
+Agent/Ping instproc recv {from rtt} {
+$self instvar node_
+puts "node[$node_ id] received Ping answer from $from with roundtriptime $rtt ms"}
+set p0 [new Agent/Ping]
+$ns attach-agent $n1 $p0
+set p1 [new Agent/Ping]
+$ns attach-agent $n4 $p1
+$ns connect $p0 $p1
+set i 0.1
+while {$i<39} {
+$ns at $i "$p1 send"
+$ns at $i "$p0 send"
+set i [expr $i + 0.1]
